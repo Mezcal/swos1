@@ -3,6 +3,8 @@ package ch.bfh.swos.eventmng.model;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,8 +22,9 @@ public class Act implements Serializable {
 	private String genre;
 	private Integer salary;
 	private static final long serialVersionUID = 1L;
-
-	private Event event;
+	
+	@ManyToMany
+	private List<Event> events;
 
 	public Act() {
 		super();
@@ -59,12 +62,12 @@ public class Act implements Serializable {
 		this.salary = salary;
 	}
 
-	public Event getEvent() {
-		return event;
+	public List<Event> getEvents() {
+		return events;
 	}
 
-	public void setEvent(Event event) {
-		this.event = event;
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 }

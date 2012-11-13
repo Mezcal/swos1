@@ -8,6 +8,11 @@ import java.util.List;
 
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.TemporalType.TIMESTAMP;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.REFRESH;
+import static javax.persistence.CascadeType.DETACH;
 
 /**
  * Entity implementation class for Entity: Event
@@ -20,12 +25,15 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	private long id;
 	private String name;
+	@Temporal(TIMESTAMP)
 	private Date dateFrom;
+	@Temporal(TIMESTAMP)
 	private Date dateTo;
-	private String ResponsiblePerson;
-	private Integer EntryPrice;
+	private String responsiblePerson;
+	private Integer entryPrice;
 	private static final long serialVersionUID = 1L;
 
+	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH }, mappedBy = "events")
 	private List<Act> acts;
 
 	public Event() {
@@ -49,19 +57,19 @@ public class Event implements Serializable {
 	}
 
 	public String getResponsiblePerson() {
-		return this.ResponsiblePerson;
+		return this.responsiblePerson;
 	}
 
 	public void setResponsiblePerson(String ResponsiblePerson) {
-		this.ResponsiblePerson = ResponsiblePerson;
+		this.responsiblePerson = ResponsiblePerson;
 	}
 
 	public Integer getEntryPrice() {
-		return this.EntryPrice;
+		return this.entryPrice;
 	}
 
 	public void setEntryPrice(Integer EntryPrice) {
-		this.EntryPrice = EntryPrice;
+		this.entryPrice = EntryPrice;
 	}
 
 	public Date getDateFrom() {

@@ -19,6 +19,10 @@ public class Location implements Serializable {
 	private String address;
 	private Integer zip;
 	private String city;
+	private String contact;
+	private Integer capacity;
+
+	//TODO relation 
 	private static final long serialVersionUID = 1L;
 
 	public Location() {
@@ -58,6 +62,18 @@ public class Location implements Serializable {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	public Integer getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
 	}
    
 }
