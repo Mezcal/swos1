@@ -1,7 +1,5 @@
 package ch.bfh.swos.eventmng.model;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
@@ -22,23 +20,21 @@ public class CreateTest {
 		Act act2 = new Act();
 		act2.setName("act1");
 
-		
-		 ArrayList<Act> acts = new ArrayList<Act>(); 
-		 acts.add(act1);
-		 acts.add(act2); 
-		 event.setActs(acts); 
-		 
-		 ArrayList<Event> events = new ArrayList<Event>(); 
-		 events.add(event);
-		 act1.setEvents(events);
-		 act2.setEvents(events);
-		 
+		ArrayList<Act> acts = new ArrayList<Act>();
+		acts.add(act1);
+		acts.add(act2);
+		event.setActs(acts);
 
-		EntityManager em = Persistence.createEntityManagerFactory("ch.bfh.swos.eventmng.model").createEntityManager();
+		ArrayList<Event> events = new ArrayList<Event>();
+		events.add(event);
+		act1.setEvents(events);
+		act2.setEvents(events);
+
+		EntityManager em = Persistence.createEntityManagerFactory(
+				"ch.bfh.swos.eventmng.model").createEntityManager();
 
 		em.getTransaction().begin();
 		em.persist(event);
 		em.getTransaction().commit();
 	}
-
 }
