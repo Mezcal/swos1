@@ -36,8 +36,11 @@ public class Event implements Serializable {
 	private Integer entryPrice;
 	private static final long serialVersionUID = 1L;
 
-	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH }, mappedBy = "events")
+	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
 	private List<Act> acts;
+	
+	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
+	private List<Act> locations;
 
 	public Event() {
 		
@@ -99,6 +102,14 @@ public class Event implements Serializable {
 
 	public void setActs(List<Act> acts) {
 		this.acts = acts;
+	}
+
+	public List<Act> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Act> locations) {
+		this.locations = locations;
 	}
 
 }

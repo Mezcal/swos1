@@ -1,12 +1,14 @@
 package ch.bfh.swos.eventmng.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 
-import javax.persistence.*;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * Entity implementation class for Entity: Act
@@ -23,7 +25,7 @@ public class Act implements Serializable {
 	private Integer salary;
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany
+	@ManyToMany (mappedBy="acts")
 	private List<Event> events;
 
 	public Act() {

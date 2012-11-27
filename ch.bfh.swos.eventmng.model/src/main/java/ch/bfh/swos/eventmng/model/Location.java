@@ -1,9 +1,11 @@
 package ch.bfh.swos.eventmng.model;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.String;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  * Entity implementation class for Entity: Location
@@ -21,6 +23,9 @@ public class Location implements Serializable {
 	private String city;
 	private String contact;
 	private Integer capacity;
+	
+	@ManyToMany (mappedBy="locations")
+	private List<Event> events;
 
 	//TODO relation 
 	private static final long serialVersionUID = 1L;
@@ -74,6 +79,12 @@ public class Location implements Serializable {
 	}
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
+	}
+	public List<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
    
 }
