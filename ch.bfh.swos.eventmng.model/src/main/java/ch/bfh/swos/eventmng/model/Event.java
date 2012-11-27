@@ -42,7 +42,7 @@ public class Event implements Serializable {
 	public Event() {
 		
 		super();
-		System.out.println("Event hier");
+		System.out.println("Event hier rufer");
 	}
 
 	public long getId() {
