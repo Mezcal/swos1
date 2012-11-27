@@ -1,9 +1,12 @@
 package ch.bfh.swos.eventmng.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
@@ -16,6 +19,7 @@ import javax.persistence.ManyToMany;
 public class Location implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	private long id;
 	private String name;
 	private String address;

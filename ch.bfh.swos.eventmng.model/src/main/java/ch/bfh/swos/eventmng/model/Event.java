@@ -40,7 +40,7 @@ public class Event implements Serializable {
 	private List<Act> acts;
 	
 	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
-	private List<Act> locations;
+	private List<Location> locations;
 
 	public Event() {
 		
@@ -104,11 +104,11 @@ public class Event implements Serializable {
 		this.acts = acts;
 	}
 
-	public List<Act> getLocations() {
+	public List<Location> getLocations() {
 		return locations;
 	}
 
-	public void setLocations(List<Act> locations) {
+	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
 

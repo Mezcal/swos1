@@ -20,19 +20,22 @@ public class CreateTest {
 		Act act2 = new Act();
 		act2.setName("act2");
 		
-		Act act3 = new Act();
-		act2.setName("act3");
+		Location loc1 = new Location();
+		loc1.setName("Wankdorf");
+		
+		Location loc2 = new Location();
+		loc2.setName("Hallenstadion");
 
 		ArrayList<Act> acts = new ArrayList<Act>();
 		acts.add(act1);
 		acts.add(act2);
-		acts.add(act3);
 		event.setActs(acts);
 
-		ArrayList<Event> events = new ArrayList<Event>();
-		events.add(event);
-		act1.setEvents(events);
-		act2.setEvents(events);
+		ArrayList<Location> locs = new ArrayList<Location>();
+		locs.add(loc1);
+		locs.add(loc2);
+		event.setLocations(locs);
+		
 
 		EntityManager em = Persistence.createEntityManagerFactory(
 				"ch.bfh.swos.eventmng.model").createEntityManager();
