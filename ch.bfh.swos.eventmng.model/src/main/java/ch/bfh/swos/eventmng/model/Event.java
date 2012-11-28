@@ -43,9 +43,7 @@ public class Event implements Serializable {
 	private List<Location> locations;
 
 	public Event() {
-		
 		super();
-		System.out.println("Event hier rufer");
 	}
 
 	public long getId() {

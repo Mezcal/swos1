@@ -27,5 +27,4 @@ public class PersistenceServiceTest {
 		Assert.assertTrue(event.getName().equals(foundEvent.getName()));
 		eventDao.delete(foundEvent);
 	}
-
 }

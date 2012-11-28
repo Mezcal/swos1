@@ -31,7 +31,6 @@ public class Location implements Serializable {
 	@ManyToMany (mappedBy="locations")
 	private List<Event> events;
 
-	//TODO relation 
 	private static final long serialVersionUID = 1L;
 
 	public Location() {
