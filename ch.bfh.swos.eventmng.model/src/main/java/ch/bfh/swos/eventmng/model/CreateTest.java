@@ -7,6 +7,13 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
+/**
+ * JUnit test class for testing persisting entities into 
+ * the database
+ * 
+ * @author Mezcal
+ *
+ */
 public class CreateTest {
 
 	@Test

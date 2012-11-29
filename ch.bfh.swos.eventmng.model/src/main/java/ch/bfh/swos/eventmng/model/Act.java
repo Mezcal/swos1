@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 /**
  * Entity implementation class for Entity: Act
  * 
+ * @author Mezcal
+ *
  */
 @Entity
 public class Act implements Serializable {
@@ -71,5 +73,5 @@ public class Act implements Serializable {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
-
+	
 }

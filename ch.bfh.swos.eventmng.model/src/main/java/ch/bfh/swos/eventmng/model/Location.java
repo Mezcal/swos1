@@ -12,10 +12,11 @@ import javax.persistence.ManyToMany;
 
 /**
  * Entity implementation class for Entity: Location
+ * 
+ * @author Mezcal
  *
  */
 @Entity
-
 public class Location implements Serializable {
 
 	@Id

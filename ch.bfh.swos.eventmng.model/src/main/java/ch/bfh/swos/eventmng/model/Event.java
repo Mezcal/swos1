@@ -20,6 +20,8 @@ import javax.persistence.Temporal;
 /**
  * Entity implementation class for Entity: Event
  * 
+ * @author Mezcal
+ *
  */
 @Entity
 public class Event implements Serializable {
@@ -109,5 +111,5 @@ public class Event implements Serializable {
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
-
+	
 }
