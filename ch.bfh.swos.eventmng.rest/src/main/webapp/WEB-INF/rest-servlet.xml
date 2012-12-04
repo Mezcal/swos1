@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-    <context:component-scan base-package="ch.bfh.swos.bookapp.rest.controller"/>
+    <context:component-scan base-package="ch.bfh.swos.eventmng.rest.controller"/>
     <mvc:annotation-driven/>
     
 </beans>
