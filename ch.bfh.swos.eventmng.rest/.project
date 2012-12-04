@@ -3,6 +3,8 @@
 	<name>ch.bfh.swos.eventmng.rest</name>
 	<comment></comment>
 	<projects>
+		<project>ch.bfh.swos.eventmng.service</project>
+		<project>ch.bfh.swos.eventmng.model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

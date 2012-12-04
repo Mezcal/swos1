@@ -5,6 +5,12 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="ch.bfh.swos.eventmng.service.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.eventmng.service/ch.bfh.swos.eventmng.service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ch.bfh.swos.eventmng.model.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.eventmng.model/ch.bfh.swos.eventmng.model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ch.bfh.swos.eventmng.rest"/>
         <property name="java-output-path" value="/ch.bfh.swos.eventmng.rest/target/classes"/>
     </wb-module>
