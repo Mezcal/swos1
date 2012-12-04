@@ -14,8 +14,7 @@ import ch.bfh.swos.eventmng.model.Event;
 import ch.bfh.swos.eventmng.model.Location;
 
 /**
- * JUnit test class for testing the persistence
- * functionalities of the DAO-Objects
+ * JUnit test class for testing the persistence functionalities of the DAO-Objects
  * 
  * @author Mezcal
  *

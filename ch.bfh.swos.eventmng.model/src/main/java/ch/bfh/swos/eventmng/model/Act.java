@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 /**
  * Entity implementation class for Entity: Act
  * 
@@ -27,6 +29,7 @@ public class Act implements Serializable {
 	private Integer salary;
 	private static final long serialVersionUID = 1L;
 	
+	@JsonManagedReference
 	@ManyToMany (mappedBy="acts")
 	private List<Event> events;
 

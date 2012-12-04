@@ -1,6 +1,5 @@
 package ch.bfh.swos.eventmng.service;
 
-
 import java.util.Collection;
 
 import ch.bfh.swos.eventmng.model.Event;

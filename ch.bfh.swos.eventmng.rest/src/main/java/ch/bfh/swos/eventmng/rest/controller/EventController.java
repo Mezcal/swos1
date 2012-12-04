@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import ch.bfh.swos.eventmng.model.Event;
 import ch.bfh.swos.eventmng.service.EventDao;
 
+/**
+ * This class represents a rest controller for the events
+ * 
+ * @author Mezcal
+ *
+ */
 @Controller
 @RequestMapping("/events")
 public class EventController {
@@ -40,7 +46,7 @@ public class EventController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Collection<Event> getEvents() {
-		System.out.println("Collection of Event requested");
+		System.out.println("Collection of Events requested");
 		return eventDao.read();
 	}
 

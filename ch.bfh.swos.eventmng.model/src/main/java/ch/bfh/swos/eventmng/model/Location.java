@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 /**
  * Entity implementation class for Entity: Location
  * 
@@ -29,6 +31,7 @@ public class Location implements Serializable {
 	private String contact;
 	private Integer capacity;
 	
+	@JsonManagedReference
 	@ManyToMany (mappedBy="locations")
 	private List<Event> events;
 

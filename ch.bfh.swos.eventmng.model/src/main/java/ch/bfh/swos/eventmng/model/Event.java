@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 /**
  * Entity implementation class for Entity: Event
  * 
@@ -38,9 +40,11 @@ public class Event implements Serializable {
 	private Integer entryPrice;
 	private static final long serialVersionUID = 1L;
 
+	@JsonBackReference
 	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
 	private List<Act> acts;
 	
+	@JsonBackReference
 	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
 	private List<Location> locations;
 
