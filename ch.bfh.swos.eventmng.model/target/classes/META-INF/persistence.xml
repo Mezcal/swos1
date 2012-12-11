@@ -9,7 +9,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/swos"/>
 			<property name="javax.persistence.jdbc.user" value="bfh"/>
 			<property name="javax.persistence.jdbc.password" value="bfh"/>
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
 			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
 		</properties>
 	</persistence-unit>
