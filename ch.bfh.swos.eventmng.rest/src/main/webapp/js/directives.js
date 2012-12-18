@@ -1,6 +1,6 @@
 'use strict';
 
-var directive = angular.module('directives', ['ui.directives']).directive;
+var directives = angular.module('directives', ['ui.directives']).directive;
 
 directive('date', function (dateFilter) {
     return {
