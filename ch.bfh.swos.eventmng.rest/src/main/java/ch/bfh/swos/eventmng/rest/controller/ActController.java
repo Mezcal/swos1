@@ -19,7 +19,7 @@ import ch.bfh.swos.eventmng.service.ActDao;
 /**
  * This class represents a rest controller for the acts
  * 
- * @author Mezcal test
+ * @author Mezcal
  *
  */
 @Controller
