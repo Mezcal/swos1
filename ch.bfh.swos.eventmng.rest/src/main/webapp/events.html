@@ -29,21 +29,21 @@
 
 <div ng-controller="EventController">
 	{{debugMsg}}<br/>
-    <form id="form">
+    <form id="form" name="eventForm">
         <label for="name">Name</label>
         <input id="name" ng-model="currentEvent.name"/>
         <br/>
         <label for="dateFrom">Date from</label>
-        <input id="dateFrom" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"/>
+        <input id="dateFrom" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" />
         <br/>
         <label for="dateTo">Date to</label>
-        <input id="dateTo" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"/>
+        <input id="dateTo" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" />
         <br/>
         <label for="responsiblePerson">Responsible person</label>
-        <input id="responsiblePerson" ng-model="currentEvent.responsiblePerson"/>
+        <input id="responsiblePerson" ng-model="currentEvent.responsiblePerson" />
         <br/>
         <label for="entryPrice">Entry price</label>
-        <input id="entryPrice" ng-model="currentEvent.entryPrice"/>
+        <input id="entryPrice" ng-model="currentEvent.entryPrice" />
         <br/>
         <label for="id">Id</label>
         <input id="id" disabled="disabled" ng-model="currentEvent.id"/>
@@ -66,6 +66,10 @@
         	<tr ng-repeat="loc in locations">
 				<td><input type="checkbox" ng-change="selectLocation(loc)" ng-model="currentEventLocations[loc.id]"></td><!-- ng-model="inAtcs(act.id)" -->
 				<td>{{loc.id}}</td>
+				<td>{{loc.name}}</td>
+				<td>{{loc.address}}</td>
+				<td>{{loc.zip}}</td>
+				<td>{{loc.city}}</td>
         	</tr>
        	</table>
     </form>
