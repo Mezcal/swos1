@@ -1,11 +1,5 @@
 package ch.bfh.swos.eventmng.model;
 
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
 import org.junit.Test;
 
 /**
@@ -19,11 +13,11 @@ public class CreateTest {
 
 	@Test
 	public void test() {
-		Event event = new Event();
+		/*Event event = new Event();
 		event.setName("Silvesterparty");
-		event.setDateFrom(new Date());
-		event.setDateTo(new Date());
-		event.setEntryPrice(80);
+		//event.setDateFrom(new Date());
+		//event.setDateTo(new Date());
+		//event.setEntryPrice(80);
 		event.setResponsiblePerson("Event AG");
 
 		Act act1 = new Act();
@@ -68,6 +62,6 @@ public class CreateTest {
 
 		em.getTransaction().begin();
 		em.persist(event);
-		em.getTransaction().commit();
+		em.getTransaction().commit();*/
 	}
 }

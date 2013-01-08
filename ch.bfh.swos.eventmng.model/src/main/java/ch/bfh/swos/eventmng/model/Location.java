@@ -3,14 +3,10 @@ package ch.bfh.swos.eventmng.model;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  * Entity implementation class for Entity: Location
@@ -30,10 +26,6 @@ public class Location implements Serializable {
 	private String city;
 	private String contact;
 	private Integer capacity;
-	
-	@JsonManagedReference
-	@ManyToMany (mappedBy="locations")
-	private List<Event> events;
 
 	private static final long serialVersionUID = 1L;
 
@@ -86,12 +78,6 @@ public class Location implements Serializable {
 	}
 	public void setCapacity(Integer capacity) {
 		this.capacity = capacity;
-	}
-	public List<Event> getEvents() {
-		return events;
-	}
-	public void setEvents(List<Event> events) {
-		this.events = events;
 	}
    
 }

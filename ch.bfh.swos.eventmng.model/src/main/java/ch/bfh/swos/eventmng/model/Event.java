@@ -5,7 +5,6 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.TemporalType.TIMESTAMP;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,8 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
-
-import org.codehaus.jackson.annotate.JsonBackReference;
+import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: Event
@@ -32,19 +30,17 @@ public class Event implements Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	private long id;
 	private String name;
-	@Temporal(TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFrom;
-	@Temporal(TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateTo;
 	private String responsiblePerson;
 	private Integer entryPrice;
 	private static final long serialVersionUID = 1L;
 
-	@JsonBackReference
 	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
 	private List<Act> acts;
 	
-	@JsonBackReference
 	@ManyToMany(cascade = { PERSIST, MERGE, REFRESH, DETACH })
 	private List<Location> locations;
 

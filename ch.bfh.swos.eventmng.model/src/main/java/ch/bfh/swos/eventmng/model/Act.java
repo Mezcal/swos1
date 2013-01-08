@@ -3,14 +3,10 @@ package ch.bfh.swos.eventmng.model;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  * Entity implementation class for Entity: Act
@@ -28,10 +24,6 @@ public class Act implements Serializable {
 	private String genre;
 	private Integer salary;
 	private static final long serialVersionUID = 1L;
-	
-	@JsonManagedReference
-	@ManyToMany (mappedBy="acts")
-	private List<Event> events;
 
 	public Act() {
 		super();
@@ -67,14 +59,6 @@ public class Act implements Serializable {
 
 	public void setSalary(Integer salary) {
 		this.salary = salary;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
 	}
 	
 }
