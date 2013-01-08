@@ -28,16 +28,16 @@
 <h2>Current Event</h2>
 
 <div ng-controller="EventController">
-
+	{{debugMsg}}<br/>
     <form id="form">
         <label for="name">Name</label>
         <input id="name" ng-model="currentEvent.name"/>
         <br/>
         <label for="dateFrom">Date from</label>
-        <input id="dateFrom" ng-model="currentEvent.dateFrom" date="dd.mm.yyyy" ui-date/>
+        <input id="dateFrom" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"/>
         <br/>
         <label for="dateTo">Date to</label>
-        <input id="dateTo" ng-model="currentEvent.dateTo"/>
+        <input id="dateTo" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"/>
         <br/>
         <label for="responsiblePerson">Responsible person</label>
         <input id="responsiblePerson" ng-model="currentEvent.responsiblePerson"/>
@@ -50,7 +50,26 @@
         <br/>
         <button id="save" ng-click="save()">Save Book</button>
         <button id="cancel" ng-click="cancel()">Cancel</button>
+        
+        Acts
+        <table>
+        	<tr ng-repeat="act in acts">
+				<td><input type="checkbox" ng-change="selectAct(act)" ng-model="currentEventActs[act.id]"></td><!-- ng-model="inAtcs(act.id)" -->
+				<td>{{act.id}}</td>
+				<td>{{act.name}}</td>
+        		<td>{{act.genre}}</td>
+        		<td>{{act.salary}}</td>
+        	</tr>
+       	</table>
+       	Locations
+       	<table>
+        	<tr ng-repeat="loc in locations">
+				<td><input type="checkbox" ng-change="selectLocation(loc)" ng-model="currentEventLocations[loc.id]"></td><!-- ng-model="inAtcs(act.id)" -->
+				<td>{{loc.id}}</td>
+        	</tr>
+       	</table>
     </form>
+    
 
     <h2>Books</h2>
 
@@ -84,6 +103,8 @@
             </tr>
             </tbody>
         </table>
+
+        	
     </form>
 
 </div>
