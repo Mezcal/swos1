@@ -6,6 +6,7 @@ function EventController($scope, Event,Act,Location) {
     $scope.currentEvent = new Event();
     $scope.currentEventActs = [];
     $scope.currentEventLocations = [];
+    $scope.currentEventInList;
     $scope.events = Event.query();
     $scope.acts = Act.query();
     $scope.locations = Location.query();
@@ -32,6 +33,9 @@ function EventController($scope, Event,Act,Location) {
 	            $scope.events.push($scope.currentEvent);
 	        } else {
 	            $scope.currentEvent = Event.update($scope.currentEvent);
+	            
+	            //copy the object back to the view
+	        	jQuery.extend(true, $scope.currentEventInList,$scope.currentEvent);
 	        }
 	        $scope.cancel();
         //}
@@ -43,7 +47,10 @@ function EventController($scope, Event,Act,Location) {
     $scope.edit = function (event) {
     	$scope.currentEventActs = $scope.loadSelection(event.acts, $scope.currentEventActs);
     	$scope.currentEventLocations = $scope.loadSelection(event.locations, $scope.currentEventLocations);
-        $scope.currentEvent = event;
+        
+    	//copy the object to the edit field
+    	jQuery.extend(true, $scope.currentEvent, event);
+        $scope.currentEventInList = event;
     };
 
     /**
