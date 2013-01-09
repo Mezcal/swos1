@@ -29,25 +29,25 @@
     			</table>
       		</div>
 		</div>
-		<form>
+		<form ng-submit="save()">
 			<div class="row-fluid">
 				<div class="span12">
   					<fieldset>
 						<legend></legend>
 						<label>Name</label>
-						<input type="text" placeholder="Name" ng-model="currentEvent.name">				
+						<input type="text" placeholder="Name" ng-model="currentEvent.name" required>				
 						<label>Date from</label>
 						<div class="" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-							<input type="text" class="span2" id="dp1" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" ><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
+							<input type="text" class="span2" id="dp1" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" required><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
 						</div>	
 						<label>Date to</label>
 						<div class="" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-							<input type="text" class="span2" id="dp2" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
+							<input type="text" class="span2" id="dp2" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" required><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
 						</div>
 						<label>Responsible</label>
-						<input type="text" placeholder="Name" ng-model="currentEvent.responsiblePerson">
+						<input type="text" placeholder="Name" ng-model="currentEvent.responsiblePerson" required>
 						<label>Entry Price</label>
-						<input type="text" placeholder="20" ng-model="currentEvent.entryPrice">
+						<input type="number" placeholder="20" ng-model="currentEvent.entryPrice" required>
 					</fieldset>
 				</div>
 				<div class="span2"></div>
@@ -96,7 +96,7 @@
       			<div class="span4">
       				<div class="form-actions">
 						<button type="button" class="btn" ng-click="cancel()">Cancel</button>
-						<button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
       			</div>
 			</div>
@@ -133,7 +133,7 @@
      		 		</tbody>
     			</table>
     			
-    			Acts
+    			<label style="font-weight:bold;">Acts</label>
       			<table class="table table-bordered">
 			    		<thead>
 	      					<tr>
@@ -151,7 +151,7 @@
      		 			</tbody>
     			</table>
     			
-    			Locations
+    			<label  style="font-weight:bold;">Locations</label>
       			<table class="table table-bordered">
 			    		<thead>
 	      					<tr>

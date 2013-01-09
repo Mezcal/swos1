@@ -21,19 +21,17 @@ function LocationController($scope, Location) {
      * save location
      */
     $scope.save = function () {
-        //if(eventForm.input.$valid){
-	    	var isNew = $scope.currentLocation.id == null;
-	        if (isNew) {
-	            $scope.currentLocation = Location.save($scope.currentLocation);
-	            $scope.locations.push($scope.currentLocation);
-	        } else {
-	            $scope.currentLocation = Location.update($scope.currentLocation);
-	            
-	            //copy the object back to the view
-	        	jQuery.extend(true, $scope.currentLocationInList,$scope.currentLocation);
-	        }
-	        $scope.cancel();
-        //}
+    	var isNew = $scope.currentLocation.id == null;
+        if (isNew) {
+            $scope.currentLocation = Location.save($scope.currentLocation);
+            $scope.locations.push($scope.currentLocation);
+        } else {
+            $scope.currentLocation = Location.update($scope.currentLocation);
+            
+            //copy the object back to the view
+        	jQuery.extend(true, $scope.currentLocationInList,$scope.currentLocation);
+        }
+        $scope.cancel();
     };
 
     /**
@@ -60,5 +58,12 @@ function LocationController($scope, Location) {
     $scope.remove = function () {
 		$scope.locations.splice($scope.delIndex, 1);
 		Location.remove({'id':$scope.delId});
+    };
+    
+    /**
+     * debug
+     */
+    $scope.debug = function(msg){
+    	$scope.debugMsg = $scope.debugMsg+" | "+msg;
     };
 }

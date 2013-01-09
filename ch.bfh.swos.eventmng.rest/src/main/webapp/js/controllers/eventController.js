@@ -30,21 +30,19 @@ function EventController($scope, Event,Act,Location) {
      * save event
      */
     $scope.save = function () {
-        //if(eventForm.input.$valid){
-	    	var isNew = $scope.currentEvent.id == null;
-	        if (isNew) {
-	            $scope.currentEvent = Event.save($scope.currentEvent);
-	            $scope.events.push($scope.currentEvent);
-	        } else {	        	
-	        	$scope.currentEvent = Event.update($scope.currentEvent);
-	        	
-	            //copy the object back to the view (clear arrays to prevent magic javascript errors)
-	        	$scope.currentEventInList.acts = [];
-	        	$scope.currentEventInList.locations = [];
-	        	jQuery.extend(true,$scope.currentEventInList, $scope.currentEvent);
-	        }
-	        $scope.cancel();
-        //}
+    	var isNew = $scope.currentEvent.id == null;
+        if (isNew) {
+            $scope.currentEvent = Event.save($scope.currentEvent);
+            $scope.events.push($scope.currentEvent);
+        } else {	        	
+        	$scope.currentEvent = Event.update($scope.currentEvent);
+        	
+            //copy the object back to the view (clear arrays to prevent magic javascript errors)
+        	$scope.currentEventInList.acts = [];
+        	$scope.currentEventInList.locations = [];
+        	jQuery.extend(true,$scope.currentEventInList, $scope.currentEvent);
+        }
+        $scope.cancel();
     };
 
     /**

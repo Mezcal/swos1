@@ -31,28 +31,28 @@
     			</table>
       		</div>
 		</div>
-		<form>
+		<form ng-submit="save()">
 			<div class="row-fluid">
 				<div class="span3">
   					<fieldset>
 						<legend></legend>
 						<label>Name</label>
-						<input type="text" placeholder="Name" ng-model="currentLocation.name">
+						<input type="text" placeholder="Name" ng-model="currentLocation.name" required>
 						<label>Address</label>
-						<input type="text" placeholder="Strasse" ng-model="currentLocation.address">	
+						<input type="text" placeholder="Strasse" ng-model="currentLocation.address" required>	
 						<label>Zip</label>
-						<input type="text" placeholder="3000" ng-model="currentLocation.zip">					
+						<input type="number" min="1000" max="9999" placeholder="3000" ng-model="currentLocation.zip" required>					
 					</fieldset>
 				</div>
 				<div class="span3">
   					<fieldset>
 						<legend></legend>
 						<label>City</label>
-						<input type="text" placeholder="Bern" ng-model="currentLocation.city">
+						<input type="text" placeholder="Bern" ng-model="currentLocation.city" required>
 						<label>Contact</label>
 						<input type="text" placeholder="Name" ng-model="currentLocation.contact">	
 						<label>Capacity</label>
-						<input type="text" placeholder="1000" ng-model="currentLocation.capacity">						
+						<input type="number" placeholder="1000" ng-model="currentLocation.capacity">						
 					</fieldset>
 				</div>
 				<div class="span6"></div>
@@ -61,10 +61,11 @@
       			<div class="span12">
       				<div class="form-actions">
 						<button type="button" class="btn" ng-click="cancel()">Cancel</button>
-						<button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
       			</div>
 			</div>
 		</form>
+		{{debugMsg}}
 		<div data-ng-include data-src="'utils/modalDeleteConfirm.html'"></div>
     </div>

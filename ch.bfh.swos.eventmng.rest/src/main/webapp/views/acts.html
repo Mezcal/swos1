@@ -25,17 +25,17 @@
     			</table>
       		</div>
 		</div>
-		<form>
+		<form id="actForm" name="actForm" ng-submit="save()">
 			<div class="row-fluid">
 				<div class="span12">
   					<fieldset>
 						<legend></legend>
 						<label>Name</label>
-						<input type="text" placeholder="Name" ng-model="currentAct.name">
+						<input type="text" placeholder="Name" ng-model="currentAct.name" required>
 						<label>Genre</label>
-						<input type="text" placeholder="Rock" ng-model="currentAct.genre">	
+						<input type="text" placeholder="Rock" ng-model="currentAct.genre" required>	
 						<label>Salary</label>
-						<input type="text" placeholder="20" ng-model="currentAct.salary">					
+						<input type="number" placeholder="20" ng-model="currentAct.salary" required>					
 					</fieldset>
 				</div>
 				<div class="span2"></div>
@@ -44,10 +44,11 @@
       			<div class="span4">
       				<div class="form-actions">
 						<button type="button" class="btn" ng-click="cancel()">Cancel</button>
-						<button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
       			</div>
 			</div>
 		</form>
+		{{debugMsg}}
 		<div data-ng-include data-src="'utils/modalDeleteConfirm.html'"></div>
     </div>

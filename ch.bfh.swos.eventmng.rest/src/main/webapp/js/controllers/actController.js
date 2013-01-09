@@ -21,19 +21,17 @@ function ActController($scope, Act) {
      * save act
      */
     $scope.save = function () {
-        //if(eventForm.input.$valid){
-	    	var isNew = $scope.currentAct.id == null;
-	        if (isNew) {
-	            $scope.currentAct = Act.save($scope.currentAct);
-	            $scope.acts.push($scope.currentAct);
-	        } else {
-	            $scope.currentAct = Act.update($scope.currentAct);
-	            
-	            //copy the object back to the view
-	        	jQuery.extend(true, $scope.currentActInList,$scope.currentAct);
-	        }
-	        $scope.cancel();
-        //}
+    	var isNew = $scope.currentAct.id == null;
+        if (isNew) {
+            $scope.currentAct = Act.save($scope.currentAct);
+            $scope.acts.push($scope.currentAct);
+        } else {
+            $scope.currentAct = Act.update($scope.currentAct);
+            
+            //copy the object back to the view
+        	jQuery.extend(true, $scope.currentActInList,$scope.currentAct);
+        }
+        $scope.cancel();
     };
 
     /**
@@ -60,5 +58,12 @@ function ActController($scope, Act) {
     $scope.remove = function () {
 		$scope.acts.splice($scope.delIndex, 1);
 		Act.remove({'id':$scope.delId});
+    };
+    
+    /**
+     * debug
+     */
+    $scope.debug = function(msg){
+    	$scope.debugMsg = $scope.debugMsg+" | "+msg;
     };
 }
