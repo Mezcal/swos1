@@ -17,7 +17,7 @@
     			  		</tr>
    				   	</thead>
 	   			   	<tbody>
-   			   			<tr ng-repeat="event in events">
+   			   			<tr ng-repeat="event in events" style="cursor:pointer;">
     		  				<td ng-click="showEvent(event)">{{event.name}}</td>
     		  				<td ng-click="showEvent(event)">{{event.dateFrom | date:'dd.MM.yyyy'}}</td>
     			  			<td ng-click="showEvent(event)">{{event.dateTo | date:'dd.MM.yyyy'}}</td>
@@ -104,7 +104,7 @@
 		</form>
 		<!-- Modal box -->
 		<div ui-modal class="fade" ng-model="modalShown" id="myModal">
-		  	<div >
+		  	<div style="padding:5px;">
       			<table class="table table-condensed">
 	   			   	<tbody>
 	   			   		<tr>
@@ -147,7 +147,7 @@
 	   			   			<tr ng-repeat="act in currentEventModalView.acts">
     		  					<td>{{act.name}}</td>
     		  					<td>{{act.genre}}</td>
-    			  				<td>{{act.salary}}</td>
+    			  				<td>{{act.salary}}.-</td>
 	    		  			</tr>
      		 			</tbody>
     			</table>
@@ -175,8 +175,7 @@
 	    		  			</tr>
      		 			</tbody>
     			</table>
-      			</div>
+    			<a class="btn btn-primary" style="float: right;margin-bottom: 5px;" id="close" ng-click="modalShown=false">close</a>
       		</div>
-      		<a class="btn" id="close" ng-click="modalShown=false">close</a>
 		</div>
     </div>

@@ -21,11 +21,6 @@ function EventController($scope, Event,Act,Location) {
         $scope.currentEvent = new Event();
         $scope.currentEventActs = [];
     	$scope.currentEventLocations = [];
-    	
-    	$scope.debug("#nach cancel:"); 
-    	jQuery.each($scope.currentEventInList.acts,function(){
-    		$scope.debug(this.name);
-    	});
     };
 
     /**
@@ -37,12 +32,7 @@ function EventController($scope, Event,Act,Location) {
 	        if (isNew) {
 	            $scope.currentEvent = Event.save($scope.currentEvent);
 	            $scope.events.push($scope.currentEvent);
-	        } else {
-	    		$scope.debug("#vor save:"); 
-	        	jQuery.each($scope.currentEvent.acts,function(){
-	        		$scope.debug(this.name);
-	        	});
-	        	
+	        } else {	        	
 	        	$scope.currentEvent = Event.update($scope.currentEvent);
 	        	
 	            //copy the object back to the view (clear arrays to prevent magic javascript errors)
@@ -90,7 +80,6 @@ function EventController($scope, Event,Act,Location) {
      */
     $scope.selectAct = function(act){
     	if(jQuery.type($scope.currentEvent.acts) === "undefined"){
-    		$scope.debug("init act array!");
     		$scope.currentEvent.acts = [];
     	}
     	
@@ -109,7 +98,6 @@ function EventController($scope, Event,Act,Location) {
      */
     $scope.selectLocation = function(loc){
     	if(jQuery.type($scope.currentEvent.locations) === "undefined"){
-    		$scope.debug("init location array!");
     		$scope.currentEvent.locations = [];
     	}
     	
