@@ -117,3 +117,101 @@ function EventController($scope, Event,Act,Location) {
     	$scope.debugMsg = $scope.debugMsg+" | "+msg;
     };
 }
+
+function ActController($scope, Act) {
+	$scope.currentAct = new Act();
+	$scope.currentActInList = new Act();
+	$scope.acts = Act.query();
+	
+	/**
+     * cancel edit
+     */
+    $scope.cancel = function () {
+        $scope.currentAct = new Act();
+    };
+
+    /**
+     * save event
+     */
+    $scope.save = function () {
+        //if(eventForm.input.$valid){
+	    	var isNew = $scope.currentAct.id == null;
+	        if (isNew) {
+	            $scope.currentAct = Act.save($scope.currentAct);
+	            $scope.acts.push($scope.currentAct);
+	        } else {
+	            $scope.currentAct = Act.update($scope.currentAct);
+	            
+	            //copy the object back to the view
+	        	jQuery.extend(true, $scope.currentActInList,$scope.currentAct);
+	        }
+	        $scope.cancel();
+        //}
+    };
+
+    /**
+     * edit selected event
+     */
+    $scope.edit = function (act) {        
+    	//copy the object to the edit field
+    	jQuery.extend(true, $scope.currentAct, act);
+        $scope.currentActInList = act;
+    };
+
+    /**
+     * remove event
+     */
+    $scope.remove = function (index, id) {
+		$scope.acts.splice(index, 1);
+		Act.remove({'id':id});
+    };
+}
+
+function LocationController($scope, Location) {
+	$scope.currentLocation = new Location();
+	$scope.currentLocationInList = new Location();
+	$scope.locations = Location.query();
+	
+	/**
+     * cancel edit
+     */
+    $scope.cancel = function () {
+        $scope.currentLocation = new Location();
+    };
+
+    /**
+     * save event
+     */
+    $scope.save = function () {
+        //if(eventForm.input.$valid){
+	    	var isNew = $scope.currentLocation.id == null;
+	        if (isNew) {
+	            $scope.currentLocation = Location.save($scope.currentLocation);
+	            $scope.locations.push($scope.currentLocation);
+	        } else {
+	            $scope.currentLocation = Location.update($scope.currentLocation);
+	            
+	            //copy the object back to the view
+	        	jQuery.extend(true, $scope.currentLocationInList,$scope.currentLocation);
+	        }
+	        $scope.cancel();
+        //}
+    };
+
+    /**
+     * edit selected event
+     */
+    $scope.edit = function (location) {        
+    	//copy the object to the edit field
+    	jQuery.extend(true, $scope.currentLocation, location);
+        $scope.currentLocationInList = location;
+    };
+
+    /**
+     * remove event
+     */
+    $scope.remove = function (index, id) {
+		$scope.locations.splice(index, 1);
+		Location.remove({'id':id});
+    };
+}
