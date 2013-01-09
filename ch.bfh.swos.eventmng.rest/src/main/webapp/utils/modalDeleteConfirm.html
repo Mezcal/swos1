@@ -13,3 +13,17 @@
 		</div>
 	</div>
 </div>
+<!-- modal box if have Dependencies-->
+<div ui-modal class="fade" ng-model="$parent.modalHasDependencies" id="hasDependenciesModal">
+	<div>
+		<div class="modal-header">
+			<h1>Not possible</h1>
+		</div>
+		<div class="modal-body">
+			There are events which use this entry yet. Please remove these events first... 
+		</div>
+		<div class="modal-footer">
+			<a class="btn btn-primary" style="" id="close" ng-click="$parent.modalHasDependencies=false">OK</a>
+		</div>
+	</div>
+</div>

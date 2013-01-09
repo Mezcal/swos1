@@ -1,6 +1,7 @@
 package ch.bfh.swos.eventmng.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import ch.bfh.swos.eventmng.model.Location;
 
@@ -50,4 +51,8 @@ public interface LocationDao {
 	 */
 	public void delete(Location loc);
 	
+	/**
+	 * get all Locations with dependencies (whick make the object undeletable)
+	 */
+	public List<Location> getLocationsWithDependencies();
 }

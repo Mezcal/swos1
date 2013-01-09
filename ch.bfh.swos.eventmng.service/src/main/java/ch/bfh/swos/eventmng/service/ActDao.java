@@ -1,6 +1,7 @@
 package ch.bfh.swos.eventmng.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import ch.bfh.swos.eventmng.model.Act;
 
@@ -49,5 +50,10 @@ public interface ActDao {
 	 * @param act which should be deleted
 	 */
 	public void delete(Act act);
-	
+
+	/**
+	 * get all Acts with dependencies (whick make the object undeletable)
+	 */
+	public List<Act> getActsWithDependencies();
+
 }

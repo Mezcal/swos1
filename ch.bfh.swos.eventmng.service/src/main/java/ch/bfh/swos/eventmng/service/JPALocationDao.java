@@ -1,10 +1,13 @@
 package ch.bfh.swos.eventmng.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,5 +42,13 @@ public class JPALocationDao implements LocationDao {
 		loc = em.merge(loc);
 		em.remove(loc);
 	}
-
+	
+	public List<Location> getLocationsWithDependencies(){
+		try {
+			TypedQuery<Location> query = em.createQuery("SELECT DISTINCT locations FROM Event e INNER JOIN e.locations AS locations", Location.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 }

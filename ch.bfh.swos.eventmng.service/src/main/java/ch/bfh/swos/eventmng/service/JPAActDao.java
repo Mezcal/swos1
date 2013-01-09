@@ -1,10 +1,13 @@
 package ch.bfh.swos.eventmng.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,5 +42,13 @@ public class JPAActDao implements ActDao {
 		act = em.merge(act);
 		em.remove(act);
 	}
-
+	
+	public List<Act> getActsWithDependencies(){
+		try {
+			TypedQuery<Act> query = em.createQuery("SELECT DISTINCT acts FROM Event e INNER JOIN e.acts AS acts", Act.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 }

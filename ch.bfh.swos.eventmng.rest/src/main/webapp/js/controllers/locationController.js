@@ -2,11 +2,13 @@
 
 var controllers = angular.module('controllers', ['services']);
 
-function LocationController($scope, Location) {
+function LocationController($scope, Location,LocationExt) {
 	$scope.currentLocation = new Location();
 	$scope.currentLocationInList = new Location();
 	$scope.locations = Location.query();
+	$scope.locationsWithDependencies = LocationExt.withDependencies();
 	$scope.modalConfirmShown = false;
+	$scope.modalHasDependencies = false;
     $scope.delIndex = -1;
 	$scope.delId = -1;
 	
@@ -47,9 +49,17 @@ function LocationController($scope, Location) {
      * remove location with confirmation
      */
     $scope.removeWithConfirm = function (index, id) {
-    	$scope.modalConfirmShown = true;
-    	$scope.delIndex = index;
-    	$scope.delId = id;
+    	var result = jQuery.grep($scope.locationsWithDependencies, function(value){ 
+    		return value.id == id;
+    	});
+    	
+    	if(jQuery.isEmptyObject(result)){
+        	$scope.modalConfirmShown = true;
+        	$scope.delIndex = index;
+        	$scope.delId = id;
+    	}else{
+    		$scope.modalHasDependencies = true;
+    	}
     };
 
     /**

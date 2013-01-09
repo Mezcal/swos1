@@ -1,6 +1,7 @@
 package ch.bfh.swos.eventmng.rest.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -58,6 +59,18 @@ public class ActController {
 	public Act getAct(@PathVariable long id) {
 		System.out.println("Act requested with id = " + id);
 		return actDao.read(id);
+	}
+	
+	/**
+	 * Check if has dependencies (whick make the object undeletable)
+	 * @param actId
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET,value = "/actsWithDependencies")
+	@ResponseBody
+	public List<Act> getActsWithDependencies() {
+		System.out.println("Collection of Acts WITH Dependencies requested ");
+		return actDao.getActsWithDependencies();
 	}
 
 	/**

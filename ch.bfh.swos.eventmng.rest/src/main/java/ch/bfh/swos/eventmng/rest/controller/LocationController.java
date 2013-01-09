@@ -1,6 +1,7 @@
 package ch.bfh.swos.eventmng.rest.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -58,6 +59,17 @@ public class LocationController {
 	public Location getLocation(@PathVariable long id) {
 		System.out.println("Location requested with id = " + id);
 		return locationDao.read(id);
+	}
+	
+	/**
+	 * check if has dependencies (whick make the object undeletable)
+	 * @param actId
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET,value = "/locationsWithDependencies")
+	@ResponseBody
+	public List<Location> getLocationsWithDependencies() {
+		return locationDao.getLocationsWithDependencies();
 	}
 
 	/**

@@ -21,10 +21,28 @@ services.factory('Act', function ($resource) {
 });
 
 /**
+ * Extended service for Act
+ */
+services.factory('ActExt', function ($resource) {
+    return $resource('rest/acts/:action/:id', {id: '@id'}, {
+        'withDependencies': {method: 'GET',params: { action:'actsWithDependencies',id:null },isArray:true}
+    });
+});
+
+/**
  * REST service for Location
  */
 services.factory('Location', function ($resource) {
     return $resource('rest/locations/:id', {id: '@id'}, {
         'update': {method: 'PUT',params: { id: null }}
+    });
+});
+
+/**
+ * Extended service for Location
+ */
+services.factory('LocationExt', function ($resource) {
+    return $resource('rest/locations/:action', {}, {
+        'withDependencies': {method: 'GET',params: { action: 'locationsWithDependencies'},isArray:true}
     });
 });

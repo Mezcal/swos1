@@ -2,11 +2,13 @@
 
 var controllers = angular.module('controllers', ['services']);
 
-function ActController($scope, Act) {
+function ActController($scope, Act,ActExt) {
 	$scope.currentAct = new Act();
 	$scope.currentActInList = new Act();
 	$scope.acts = Act.query();
+	$scope.actsWithDependencies = ActExt.withDependencies();
 	$scope.modalConfirmShown = false;
+	$scope.modalHasDependencies = false;
     $scope.delIndex = -1;
 	$scope.delId = -1;
 	
@@ -47,9 +49,17 @@ function ActController($scope, Act) {
      * remove act with confirmation
      */
     $scope.removeWithConfirm = function (index, id) {
-    	$scope.modalConfirmShown = true;
-    	$scope.delIndex = index;
-    	$scope.delId = id;
+    	var result = jQuery.grep($scope.actsWithDependencies, function(value){ 
+    		return value.id == id;
+    	});
+    	
+    	if(jQuery.isEmptyObject(result)){
+    		$scope.modalConfirmShown = true;
+        	$scope.delIndex = index;
+        	$scope.delId = id;
+    	}else{
+    		$scope.modalHasDependencies = true;
+    	}
     };
 
     /**
