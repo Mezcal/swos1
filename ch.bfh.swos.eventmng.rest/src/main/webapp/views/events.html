@@ -1,5 +1,4 @@
     <div class="container" ng-controller="EventController">
-    	{{debugMsg}}<br/>
     	<h1>Events</h1>
 						
 		<div class="row-fluid">
@@ -24,7 +23,7 @@
      			 			<td ng-click="showEvent(event)">{{event.responsiblePerson}}</td>
     	 		 			<td ng-click="showEvent(event)">{{event.entryPrice}}.-</td>
 	     		 			<td><a class="btn" id="edit" ng-click="edit(event)">edit</a></td>
-     		 				<td><a class="btn" id="delete" ng-click="remove($index,event.id)">delete</a></td>	
+     		 				<td><a class="btn" id="delete" ng-click="removeWithConfirm($index,event.id)">delete</a></td>	
     		  			</tr>
      		 		</tbody>
     			</table>
@@ -178,4 +177,6 @@
     			<a class="btn btn-primary" style="float: right;margin-bottom: 5px;" id="close" ng-click="modalShown=false">close</a>
       		</div>
 		</div>
+		{{debugMsg}}
+		<div data-ng-include data-src="'utils/modalDeleteConfirm.html'"></div>
     </div>

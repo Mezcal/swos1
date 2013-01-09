@@ -1,4 +1,4 @@
-    <div class="container" ng-controller="ActController">
+    <div class="container" ng-controller="ActController">    	
     	<h1>Acts</h1>
 						
 		<div class="row-fluid">
@@ -19,7 +19,7 @@
      			 			<td>{{act.genre}}</td>
     	 		 			<td>{{act.salary}}.-</td>
 	     		 			<td><a class="btn" id="edit" ng-click="edit(act)">edit</a></td>
-     		 				<td><a class="btn" id="delete" ng-click="remove($index,act.id)">delete</a></td>	
+     		 				<td><a class="btn" id="delete" ng-click="removeWithConfirm($index,act.id)">delete</a></td>	
     		  			</tr>
      		 		</tbody>
     			</table>
@@ -49,4 +49,5 @@
       			</div>
 			</div>
 		</form>
+		<div data-ng-include data-src="'utils/modalDeleteConfirm.html'"></div>
     </div>

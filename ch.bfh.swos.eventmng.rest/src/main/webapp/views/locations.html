@@ -25,7 +25,7 @@
      			 			<td>{{location.contact}}</td>
     	 		 			<td>{{location.capacity}}</td>
 	     		 			<td><a class="btn" id="edit" ng-click="edit(location)">edit</a></td>
-     		 				<td><a class="btn" id="delete" ng-click="remove($index,location.id)">delete</a></td>	
+     		 				<td><a class="btn" id="delete" ng-click="removeWithConfirm($index,location.id)">delete</a></td>	
     		  			</tr>
      		 		</tbody>
     			</table>
@@ -66,4 +66,5 @@
       			</div>
 			</div>
 		</form>
+		<div data-ng-include data-src="'utils/modalDeleteConfirm.html'"></div>
     </div>

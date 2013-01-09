@@ -1,0 +1,15 @@
+<!-- modal box for delete confirm-->
+<div ui-modal class="fade" ng-model="$parent.modalConfirmShown" id="confirmDeleteModal">
+	<div>
+		<div class="modal-header">
+			<h1>Delete</h1>
+		</div>
+		<div class="modal-body">
+			Do you really want to delete?
+		</div>
+		<div class="modal-footer">
+			<a class="btn btn-danger" style="" id="close" ng-click="$parent.remove();$parent.modalConfirmShown=false">Yes</a>
+			<a class="btn btn-primary" style="" id="close" ng-click="$parent.modalConfirmShown=false">No</a>
+		</div>
+	</div>
+</div>

@@ -3,16 +3,16 @@
 var eventmng = angular.module('eventmng', ['controllers', 'services','directives']).config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 	when('/', {
-		templateUrl: 'partials/home.html'
+		templateUrl: 'views/home.html'
 	}).
 	when('/acts', {
-		templateUrl: 'partials/acts.html'
+		templateUrl: 'views/acts.html'
 	}).
 	when('/locations', {
-		templateUrl: 'partials/locations.html'
+		templateUrl: 'views/locations.html'
 	}).
 	when('/events', {
-		templateUrl: 'partials/events.html'
+		templateUrl: 'views/events.html'
 	}).
       otherwise({redirectTo: '/'});
 }]);
