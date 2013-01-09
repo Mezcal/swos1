@@ -33,7 +33,7 @@
 		</div>
 		<form>
 			<div class="row-fluid">
-				<div class="span12">
+				<div class="span3">
   					<fieldset>
 						<legend></legend>
 						<label>Name</label>
@@ -41,7 +41,12 @@
 						<label>Address</label>
 						<input type="text" placeholder="Strasse" ng-model="currentLocation.address">	
 						<label>Zip</label>
-						<input type="text" placeholder="3000" ng-model="currentLocation.zip">
+						<input type="text" placeholder="3000" ng-model="currentLocation.zip">					
+					</fieldset>
+				</div>
+				<div class="span3">
+  					<fieldset>
+						<legend></legend>
 						<label>City</label>
 						<input type="text" placeholder="Bern" ng-model="currentLocation.city">
 						<label>Contact</label>
@@ -50,10 +55,10 @@
 						<input type="text" placeholder="1000" ng-model="currentLocation.capacity">						
 					</fieldset>
 				</div>
-				<div class="span2"></div>
+				<div class="span6"></div>
 			</div>
 			<div class="row-fluid">
-      			<div class="span4">
+      			<div class="span12">
       				<div class="form-actions">
 						<button type="button" class="btn" ng-click="cancel()">Cancel</button>
 						<button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>

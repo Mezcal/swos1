@@ -1,4 +1,5 @@
     <div class="container" ng-controller="EventController">
+    	{{debugMsg}}<br/>
     	<h1>Events</h1>
 						
 		<div class="row-fluid">
@@ -17,11 +18,11 @@
    				   	</thead>
 	   			   	<tbody>
    			   			<tr ng-repeat="event in events">
-    		  				<td>{{event.name}}</td>
-    		  				<td>{{event.dateFrom | date:'dd.MM.yyyy'}}</td>
-    			  			<td>{{event.dateTo | date:'dd.MM.yyyy'}}</td>
-     			 			<td>{{event.responsiblePerson}}</td>
-    	 		 			<td>{{event.entryPrice}}.-</td>
+    		  				<td ng-click="showEvent(event)">{{event.name}}</td>
+    		  				<td ng-click="showEvent(event)">{{event.dateFrom | date:'dd.MM.yyyy'}}</td>
+    			  			<td ng-click="showEvent(event)">{{event.dateTo | date:'dd.MM.yyyy'}}</td>
+     			 			<td ng-click="showEvent(event)">{{event.responsiblePerson}}</td>
+    	 		 			<td ng-click="showEvent(event)">{{event.entryPrice}}.-</td>
 	     		 			<td><a class="btn" id="edit" ng-click="edit(event)">edit</a></td>
      		 				<td><a class="btn" id="delete" ng-click="remove($index,event.id)">delete</a></td>	
     		  			</tr>
@@ -101,4 +102,81 @@
       			</div>
 			</div>
 		</form>
+		<!-- Modal box -->
+		<div ui-modal class="fade" ng-model="modalShown" id="myModal">
+		  	<div >
+      			<table class="table table-condensed">
+	   			   	<tbody>
+	   			   		<tr>
+	   			   			<th>Name</th>
+	   			   			<th></th>
+	   			   		</tr>
+   			   			<tr>
+    		  				<td>{{currentEventModalView.name}}</td>
+    		  				<td></td>
+    		  			</tr>
+    		  			<tr>
+    		  				<th>From</th>
+      						<th>To</th>
+      					</tr>
+    		  			<tr>
+    		  				<td>{{currentEventModalView.dateFrom | date:'dd.MM.yyyy'}}</td>
+    			  			<td>{{currentEventModalView.dateTo | date:'dd.MM.yyyy'}}</td>
+    			  		</tr>
+    			  		<tr>
+    		  				<th>Responsible</th>
+      						<th>Entry Price</th>
+      					</tr>
+    			  		<tr>
+     			 			<td>{{currentEventModalView.responsiblePerson}}</td>
+    	 		 			<td>{{currentEventModalView.entryPrice}}.-</td>	
+    		  			</tr>
+     		 		</tbody>
+    			</table>
+    			
+    			Acts
+      			<table class="table table-bordered">
+			    		<thead>
+	      					<tr>
+      							<th>Name</th>
+    	  						<th>Genre</th>
+	      						<th>Salary</th>    			      			      			      			      				
+    				  		</tr>
+   					   	</thead>
+		   			   	<tbody>
+	   			   			<tr ng-repeat="act in currentEventModalView.acts">
+    		  					<td>{{act.name}}</td>
+    		  					<td>{{act.genre}}</td>
+    			  				<td>{{act.salary}}</td>
+	    		  			</tr>
+     		 			</tbody>
+    			</table>
+    			
+    			Locations
+      			<table class="table table-bordered">
+			    		<thead>
+	      					<tr>
+      							<th>Name</th>
+    	  						<th>Address</th>   
+    	  						<th>Zip</th>
+    	  						<th>City</th>
+    	  						<th>Contact</th>
+    	  						<th>Capacity</th>  			      			      			      			      				
+    				  		</tr>
+   					   	</thead>
+		   			   	<tbody>
+	   			   			<tr ng-repeat="location in currentEventModalView.locations">
+    		  					<td>{{location.name}}</td>
+	     			 			<td>{{location.address}}</td>
+	    	 		 			<td>{{location.zip}}</td>
+	    	 		 			<td>{{location.city}}</td>
+	     			 			<td>{{location.contact}}</td>
+	    	 		 			<td>{{location.capacity}}</td>	
+	    		  			</tr>
+     		 			</tbody>
+    			</table>
+      			</div>
+      		</div>
+      		<a class="btn" id="close" ng-click="modalShown=false">close</a>
+		</div>
     </div>

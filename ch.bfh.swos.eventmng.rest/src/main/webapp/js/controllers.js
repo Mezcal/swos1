@@ -6,12 +6,13 @@ function EventController($scope, Event,Act,Location) {
     $scope.currentEvent = new Event();
     $scope.currentEventActs = [];
     $scope.currentEventLocations = [];
-    $scope.currentEventInList;
+    $scope.currentEventInList = new Event();
+    $scope.currentEventModalView = new Event();
     $scope.events = Event.query();
     $scope.acts = Act.query();
     $scope.locations = Location.query();
-    $scope.showId = false;
     $scope.debugMsg = "";
+    $scope.modalShown = false;
     
     /**
      * cancel edit
@@ -20,6 +21,11 @@ function EventController($scope, Event,Act,Location) {
         $scope.currentEvent = new Event();
         $scope.currentEventActs = [];
     	$scope.currentEventLocations = [];
+    	
+    	$scope.debug("#nach cancel:"); 
+    	jQuery.each($scope.currentEventInList.acts,function(){
+    		$scope.debug(this.name);
+    	});
     };
 
     /**
@@ -32,10 +38,17 @@ function EventController($scope, Event,Act,Location) {
 	            $scope.currentEvent = Event.save($scope.currentEvent);
 	            $scope.events.push($scope.currentEvent);
 	        } else {
-	            $scope.currentEvent = Event.update($scope.currentEvent);
-	            
-	            //copy the object back to the view
-	        	jQuery.extend(true, $scope.currentEventInList,$scope.currentEvent);
+	    		$scope.debug("#vor save:"); 
+	        	jQuery.each($scope.currentEvent.acts,function(){
+	        		$scope.debug(this.name);
+	        	});
+	        	
+	        	$scope.currentEvent = Event.update($scope.currentEvent);
+	        	
+	            //copy the object back to the view (clear arrays to prevent magic javascript errors)
+	        	$scope.currentEventInList.acts = [];
+	        	$scope.currentEventInList.locations = [];
+	        	jQuery.extend(true,$scope.currentEventInList, $scope.currentEvent);
 	        }
 	        $scope.cancel();
         //}
@@ -45,12 +58,15 @@ function EventController($scope, Event,Act,Location) {
      * edit selected event
      */
     $scope.edit = function (event) {
-    	$scope.currentEventActs = $scope.loadSelection(event.acts, $scope.currentEventActs);
-    	$scope.currentEventLocations = $scope.loadSelection(event.locations, $scope.currentEventLocations);
-        
+    	$scope.currentEventActs = $scope.loadSelection(event.acts);
+    	$scope.currentEventLocations = $scope.loadSelection(event.locations);
+    	
     	//copy the object to the edit field
+    	$scope.currentEvent = new Event();
     	jQuery.extend(true, $scope.currentEvent, event);
         $scope.currentEventInList = event;
+    	
+    	//$scope.currentEvent = event;
     };
 
     /**
@@ -59,6 +75,14 @@ function EventController($scope, Event,Act,Location) {
     $scope.remove = function (index, id) {
 		$scope.events.splice(index, 1);
 		Event.remove({'id':id});
+    };
+    
+    /**
+     * show event in modalbox
+     */
+    $scope.showEvent = function (event) {
+    	$scope.currentEventModalView = event;
+    	$scope.modalShown = true;
     };
     
     /**
@@ -102,8 +126,8 @@ function EventController($scope, Event,Act,Location) {
     /**
      * load selection
      */
-    $scope.loadSelection = function(pItems,pSelectionArray){
-    	pSelectionArray = [];
+    $scope.loadSelection = function(pItems){
+    	var pSelectionArray = [];
     	jQuery.each(pItems,function(){
     		pSelectionArray[this.id] = true;
     	});
