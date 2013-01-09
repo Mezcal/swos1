@@ -1,0 +1,86 @@
+<h1>acts!!!!!!!!!!!!!!</h1>
+<div ng-controller="EventController">
+	{{debugMsg}}<br/>
+    <form id="form" name="eventForm">
+        <label for="name">Name</label>
+        <input id="name" ng-model="currentEvent.name"/>
+        <br/>
+        <label for="dateFrom">Date from</label>
+        <input id="dateFrom" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" />
+        <br/>
+        <label for="dateTo">Date to</label>
+        <input id="dateTo" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" />
+        <br/>
+        <label for="responsiblePerson">Responsible person</label>
+        <input id="responsiblePerson" ng-model="currentEvent.responsiblePerson" />
+        <br/>
+        <label for="entryPrice">Entry price</label>
+        <input id="entryPrice" ng-model="currentEvent.entryPrice" />
+        <br/>
+        <label for="id">Id</label>
+        <input id="id" disabled="disabled" ng-model="currentEvent.id"/>
+        <br/>
+        <button id="save" ng-click="save()">Save Book</button>
+        <button id="cancel" ng-click="cancel()">Cancel</button>
+        
+        Acts
+        <table>
+        	<tr ng-repeat="act in acts">
+				<td><input type="checkbox" ng-change="selectAct(act)" ng-model="currentEventActs[act.id]"></td><!-- ng-model="inAtcs(act.id)" -->
+				<td>{{act.id}}</td>
+				<td>{{act.name}}</td>
+        		<td>{{act.genre}}</td>
+        		<td>{{act.salary}}</td>
+        	</tr>
+       	</table>
+       	Locations
+       	<table>
+        	<tr ng-repeat="loc in locations">
+				<td><input type="checkbox" ng-change="selectLocation(loc)" ng-model="currentEventLocations[loc.id]"></td><!-- ng-model="inAtcs(act.id)" -->
+				<td>{{loc.id}}</td>
+				<td>{{loc.name}}</td>
+				<td>{{loc.address}}</td>
+				<td>{{loc.zip}}</td>
+				<td>{{loc.city}}</td>
+        	</tr>
+       	</table>
+    </form>
+    
+
+    <h2>Books</h2>
+
+    <form id="list">
+        <input id="showId" type="checkbox"/>
+        <label for="showId">Show Id</label>
+        <table id="table" border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>Date From</th>
+                <th>Date To</th>
+                <th>Responsible Person</th>
+                <th>Entry Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="event in events">
+                <td>{{event.id}}</td>
+                <td>{{event.name}}</td>
+                <td>{{event.dateFrom | date:'dd.MM.yyyy'}}</td>
+                <td>{{event.dateTo | date:'dd.MM.yyyy'}}</td>
+                <td>{{event.responsiblePerson}}</td>
+                <td>{{event.entryPrice}}</td>
+                
+                <td><button id="edit" ng-click="edit(event)">Edit</button></td>
+                <td><button id="delete" ng-click="remove($index,event.id)">Delete</button></td>
+            </tr>
+            </tbody>
+        </table>
+
+        	
+    </form>
+
+</div>
