@@ -35,19 +35,19 @@
   					<fieldset>
 						<legend></legend>
 						<label>Name</label>
-						<input type="text" placeholder="Name…">				
+						<input type="text" placeholder="Name" ng-model="currentEvent.name">				
 						<label>Date from</label>
 						<div class="" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-							<input type="text" class="span2" id="dp1" ><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
+							<input type="text" class="span2" id="dp1" ng-model="currentEvent.dateFrom" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy" ><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
 						</div>	
 						<label>Date to</label>
 						<div class="" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-							<input type="text" class="span2" id="dp2" ><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
+							<input type="text" class="span2" id="dp2" ng-model="currentEvent.dateTo" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"><!-- Beliebiges Datum wird mit value="12-02-2012" angegeben -->
 						</div>
 						<label>Responsible</label>
-						<input type="text" placeholder="Name…">
+						<input type="text" placeholder="Name" ng-model="currentEvent.responsiblePerson">
 						<label>Entry Price</label>
-						<input type="text" placeholder="20">
+						<input type="text" placeholder="20" ng-model="currentEvent.entryPrice">
 					</fieldset>
 				</div>
 				<div class="span2"></div>
@@ -65,11 +65,11 @@
     				  		</tr>
    					   	</thead>
 		   			   	<tbody>
-	   			   			<tr>
-    		  					<td>M.I.A</td>
-    		  					<td>Pop</td>
-    			  				<td>10000</td>
-    	 		 				<td><input type="checkbox"></td>
+	   			   			<tr ng-repeat="act in acts">
+    		  					<td>{{act.name}}</td>
+    		  					<td>{{act.genre}}</td>
+    			  				<td>{{act.salary}}</td>
+    	 		 				<td><input type="checkbox" ng-change="selectAct(act)" ng-model="currentEventActs[act.id]"></td>
 	    		  			</tr>
      		 			</tbody>
     				</table>
@@ -85,18 +85,18 @@
     				  		</tr>
    					   	</thead>
 		   			   	<tbody>
-	   			   			<tr>
-    		  					<td>Bierhübeli</td>
-    		  					<td>Bern</td>
-    	 		 				<td><input type="checkbox"></td>	
+	   			   			<tr ng-repeat="loc in locations">
+    		  					<td>{{loc.name}}</td>
+    		  					<td>{{loc.city}}</td>
+    	 		 				<td><input type="checkbox" ng-change="selectLocation(loc)" ng-model="currentEventLocations[loc.id]"></td>	
 	    		  			</tr>
      		 			</tbody>
     				</table>
       			</div>
       			<div class="span4">
       				<div class="form-actions">
-						<button type="button" class="btn">Cancel</button>
-						<button type="submit" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn" ng-click="cancel()">Cancel</button>
+						<button type="submit" class="btn btn-primary" ng-click="save()">Save changes</button>
 					</div>
       			</div>
 			</div>
