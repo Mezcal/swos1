@@ -77,7 +77,7 @@ function EventController($scope, Event,Act,Location) {
     $scope.remove = function () {
     	$scope.events.splice($scope.delIndex, 1);
 		Event.remove({'id':$scope.delId});
-    }
+    };
     
     /**
      * show event in modalbox
@@ -139,127 +139,5 @@ function EventController($scope, Event,Act,Location) {
      */
     $scope.debug = function(msg){
     	$scope.debugMsg = $scope.debugMsg+" | "+msg;
-    };
-}
-
-function ActController($scope, Act) {
-	$scope.currentAct = new Act();
-	$scope.currentActInList = new Act();
-	$scope.acts = Act.query();
-	$scope.modalConfirmShown = false;
-    $scope.delIndex = -1;
-	$scope.delId = -1;
-	
-	/**
-     * cancel edit
-     */
-    $scope.cancel = function () {
-        $scope.currentAct = new Act();
-    };
-
-    /**
-     * save event
-     */
-    $scope.save = function () {
-        //if(eventForm.input.$valid){
-	    	var isNew = $scope.currentAct.id == null;
-	        if (isNew) {
-	            $scope.currentAct = Act.save($scope.currentAct);
-	            $scope.acts.push($scope.currentAct);
-	        } else {
-	            $scope.currentAct = Act.update($scope.currentAct);
-	            
-	            //copy the object back to the view
-	        	jQuery.extend(true, $scope.currentActInList,$scope.currentAct);
-	        }
-	        $scope.cancel();
-        //}
-    };
-
-    /**
-     * edit selected event
-     */
-    $scope.edit = function (act) {        
-    	//copy the object to the edit field
-    	jQuery.extend(true, $scope.currentAct, act);
-        $scope.currentActInList = act;
-    };
-    
-    /**
-     * remove act with confirmation
-     */
-    $scope.removeWithConfirm = function (index, id) {
-    	$scope.modalConfirmShown = true;
-    	$scope.delIndex = index;
-    	$scope.delId = id;
-    };
-
-    /**
-     * remove act
-     */
-    $scope.remove = function () {
-		$scope.acts.splice($scope.delIndex, 1);
-		Act.remove({'id':$scope.delId});
-    };
-}
-
-function LocationController($scope, Location) {
-	$scope.currentLocation = new Location();
-	$scope.currentLocationInList = new Location();
-	$scope.locations = Location.query();
-	$scope.modalConfirmShown = false;
-    $scope.delIndex = -1;
-	$scope.delId = -1;
-	
-	/**
-     * cancel edit
-     */
-    $scope.cancel = function () {
-        $scope.currentLocation = new Location();
-    };
-
-    /**
-     * save event
-     */
-    $scope.save = function () {
-        //if(eventForm.input.$valid){
-	    	var isNew = $scope.currentLocation.id == null;
-	        if (isNew) {
-	            $scope.currentLocation = Location.save($scope.currentLocation);
-	            $scope.locations.push($scope.currentLocation);
-	        } else {
-	            $scope.currentLocation = Location.update($scope.currentLocation);
-	            
-	            //copy the object back to the view
-	        	jQuery.extend(true, $scope.currentLocationInList,$scope.currentLocation);
-	        }
-	        $scope.cancel();
-        //}
-    };
-
-    /**
-     * edit selected event
-     */
-    $scope.edit = function (location) {        
-    	//copy the object to the edit field
-    	jQuery.extend(true, $scope.currentLocation, location);
-        $scope.currentLocationInList = location;
-    };
-    
-    /**
-     * remove location with confirmation
-     */
-    $scope.removeWithConfirm = function (index, id) {
-    	$scope.modalConfirmShown = true;
-    	$scope.delIndex = index;
-    	$scope.delId = id;
-    };
-
-    /**
-     * remove location
-     */
-    $scope.remove = function () {
-		$scope.locations.splice($scope.delIndex, 1);
-		Location.remove({'id':$scope.delId});
     };
 }
