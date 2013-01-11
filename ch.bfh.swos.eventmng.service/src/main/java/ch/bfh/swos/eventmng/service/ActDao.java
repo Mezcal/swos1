@@ -52,7 +52,9 @@ public interface ActDao {
 	public void delete(Act act);
 
 	/**
-	 * get all Acts with dependencies (whick make the object undeletable)
+	 * Get all acts, who have relations to an event (relations to an event make them undeletable)
+	 * 
+	 * @return a list of all dependent act objects
 	 */
 	public List<Act> getActsWithDependencies();
 

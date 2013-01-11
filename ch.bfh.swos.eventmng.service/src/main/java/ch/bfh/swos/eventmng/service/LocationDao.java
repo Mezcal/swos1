@@ -52,7 +52,10 @@ public interface LocationDao {
 	public void delete(Location loc);
 	
 	/**
-	 * get all Locations with dependencies (whick make the object undeletable)
+	 * Get all locations, who have relations to an event (relations to an event make them undeletable)
+	 * 
+	 * @return a list of all dependent location objects
 	 */
 	public List<Location> getLocationsWithDependencies();
+	
 }

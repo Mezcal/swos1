@@ -42,7 +42,7 @@ public class JPAActDao implements ActDao {
 		act = em.merge(act);
 		em.remove(act);
 	}
-	
+
 	public List<Act> getActsWithDependencies(){
 		try {
 			TypedQuery<Act> query = em.createQuery("SELECT DISTINCT acts FROM Event e INNER JOIN e.acts AS acts", Act.class);

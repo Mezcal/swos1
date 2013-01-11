@@ -18,7 +18,7 @@ import ch.bfh.swos.eventmng.model.Location;
 import ch.bfh.swos.eventmng.service.LocationDao;
 
 /**
- * This class represents a rest controller for the locationsS
+ * This class represents a rest controller for the locations
  * 
  * @author Mezcal
  *
@@ -59,9 +59,9 @@ public class LocationController {
 	}
 	
 	/**
-	 * check if has dependencies (whick make the object undeletable)
-	 * @param actId
-	 * @return
+	 * Get all locations, who have relations to an event (relations to an event make them undeletable)
+	 * 
+	 * @return a list of all dependent location objects
 	 */
 	@RequestMapping(method = RequestMethod.GET,value = "/locationsWithDependencies")
 	@ResponseBody

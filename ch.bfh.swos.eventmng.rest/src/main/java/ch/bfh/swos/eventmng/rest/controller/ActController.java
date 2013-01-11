@@ -59,9 +59,9 @@ public class ActController {
 	}
 	
 	/**
-	 * Check if has dependencies (whick make the object undeletable)
-	 * @param actId
-	 * @return
+	 * Get all acts, who have relations to an event (relations to an event make them undeletable)
+	 * 
+	 * @return a list of all dependent act objects
 	 */
 	@RequestMapping(method = RequestMethod.GET,value = "/actsWithDependencies")
 	@ResponseBody
