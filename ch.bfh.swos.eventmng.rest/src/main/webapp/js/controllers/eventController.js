@@ -11,7 +11,6 @@ function EventController($scope, Event,Act,Location) {
     $scope.events = Event.query();
     $scope.acts = Act.query();
     $scope.locations = Location.query();
-    $scope.debugMsg = "";
     $scope.modalShown = false;
     $scope.modalConfirmShown = false;
     $scope.delIndex = -1;
@@ -130,12 +129,5 @@ function EventController($scope, Event,Act,Location) {
     		pSelectionArray[this.id] = true;
     	});
     	return pSelectionArray;
-    };
-    
-    /**
-     * debug
-     */
-    $scope.debug = function(msg){
-    	$scope.debugMsg = $scope.debugMsg+" | "+msg;
     };
 }

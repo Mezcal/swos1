@@ -69,11 +69,4 @@ function LocationController($scope, Location,LocationExt) {
 		$scope.locations.splice($scope.delIndex, 1);
 		Location.remove({'id':$scope.delId});
     };
-    
-    /**
-     * debug
-     */
-    $scope.debug = function(msg){
-    	$scope.debugMsg = $scope.debugMsg+" | "+msg;
-    };
 }

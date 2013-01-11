@@ -69,11 +69,4 @@ function ActController($scope, Act,ActExt) {
 		$scope.acts.splice($scope.delIndex, 1);
 		Act.remove({'id':$scope.delId});
     };
-    
-    /**
-     * debug
-     */
-    $scope.debug = function(msg){
-    	$scope.debugMsg = $scope.debugMsg+" | "+msg;
-    };
 }

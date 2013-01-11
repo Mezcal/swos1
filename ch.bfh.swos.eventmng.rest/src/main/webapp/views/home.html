@@ -12,7 +12,7 @@
    <div class="row">
      <div class="span4">
        <h2>Some events</h2>
-       <p ng-repeat="event in events">
+       <p ng-repeat="event in [events[events.length-1],events[events.length-2],events[events.length-3]]">
        		<a href="#/events/">{{event.name}}</a>&nbsp;
        </p>
        <div id="dynacloud" style="line-height: 20em"></div>
@@ -20,14 +20,14 @@
      </div>
      <div class="span4">
        <h2>Some acts</h2>
-       <p ng-repeat="act in acts">
+       <p ng-repeat="act in [acts[acts.length-1],acts[acts.length-2],acts[acts.length-3]]">
        		<a href="#/acts/">{{act.name}}</a>&nbsp;
        </p>
  		<p><a class="btn btn-primary btn-large" href="#/acts/">View all &raquo;</a></p>
     </div>
      <div class="span4">
        <h2>Some locations</h2>
-       <p ng-repeat="location in locations">
+       <p ng-repeat="location in [locations[locations.length-1],locations[locations.length-2],locations[locations.length-3]]">
        		<a href="#/locations/">{{location.name}}</a>&nbsp;
        </p>
  <p><a class="btn btn-primary btn-large" href="#/locations/">View all&raquo;</a></p>
@@ -37,7 +37,7 @@
    <hr>
 
    <footer>
-     <p>&copy; Mescal-Event-Management</p>
+     <p>&copy; Mezcal-Event-Management</p>
    </footer>
 
  </div> <!-- /container -->
