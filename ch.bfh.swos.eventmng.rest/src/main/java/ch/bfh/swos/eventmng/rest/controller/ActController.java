@@ -37,7 +37,6 @@ public class ActController {
 	@ResponseBody
 	public Act createAct(@RequestBody Act act) {
 		Act createdAct = actDao.update(act);
-		System.out.println("Act created with id = " + createdAct.getId());
 		return createdAct;
 	}
 
@@ -47,7 +46,6 @@ public class ActController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Collection<Act> getActs() {
-		System.out.println("Collection of Acts requested");
 		return actDao.read();
 	}
 
@@ -57,7 +55,6 @@ public class ActController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Act getAct(@PathVariable long id) {
-		System.out.println("Act requested with id = " + id);
 		return actDao.read(id);
 	}
 	
@@ -69,7 +66,6 @@ public class ActController {
 	@RequestMapping(method = RequestMethod.GET,value = "/actsWithDependencies")
 	@ResponseBody
 	public List<Act> getActsWithDependencies() {
-		System.out.println("Collection of Acts WITH Dependencies requested ");
 		return actDao.getActsWithDependencies();
 	}
 
@@ -80,7 +76,6 @@ public class ActController {
 	@ResponseBody
 	public Act updateAct(@RequestBody Act act) {
 		Act updatedAct = actDao.update(act);
-		System.out.println("Act updated with id = " + updatedAct.getId());
 		return updatedAct;
 	}
 
@@ -92,6 +87,5 @@ public class ActController {
 	public void deleteAct(@PathVariable long id) {
 		Act act = actDao.read(id);
 		actDao.delete(act);
-		System.out.println("Delete Act with id = " + id);
 	}
 }

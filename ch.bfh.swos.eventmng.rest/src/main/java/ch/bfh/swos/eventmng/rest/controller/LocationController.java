@@ -37,7 +37,6 @@ public class LocationController {
 	@ResponseBody
 	public Location createLocation(@RequestBody Location location) {
 		Location createdLocation = locationDao.update(location);
-		System.out.println("Location created with id = " + createdLocation.getId());
 		return createdLocation;
 	}
 
@@ -47,7 +46,6 @@ public class LocationController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Collection<Location> getLocations() {
-		System.out.println("Collection of Locations requested");
 		return locationDao.read();
 	}
 
@@ -57,7 +55,6 @@ public class LocationController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Location getLocation(@PathVariable long id) {
-		System.out.println("Location requested with id = " + id);
 		return locationDao.read(id);
 	}
 	
@@ -79,7 +76,6 @@ public class LocationController {
 	@ResponseBody
 	public Location updateLocation(@RequestBody Location location) {
 		Location updatedLocation = locationDao.update(location);
-		System.out.println("Location updated with id = " + updatedLocation.getId());
 		return updatedLocation;
 	}
 
@@ -91,6 +87,5 @@ public class LocationController {
 	public void deleteLocation(@PathVariable long id) {
 		Location location = locationDao.read(id);
 		locationDao.delete(location);
-		System.out.println("Delete Location with id = " + id);
 	}
 }

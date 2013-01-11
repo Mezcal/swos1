@@ -36,7 +36,6 @@ public class EventController {
 	@ResponseBody
 	public Event createEvent(@RequestBody Event event) {
 		Event createdEvent = eventDao.update(event);
-		System.out.println("Event created with id = " + createdEvent.getId());
 		return createdEvent;
 	}
 
@@ -46,7 +45,6 @@ public class EventController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Collection<Event> getEvents() {
-		System.out.println("Collection of Events requested");
 		return eventDao.read();
 	}
 
@@ -56,7 +54,6 @@ public class EventController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Event getEvent(@PathVariable long id) {
-		System.out.println("Event requested with id = " + id);
 		return eventDao.read(id);
 	}
 
@@ -67,7 +64,6 @@ public class EventController {
 	@ResponseBody
 	public Event updateEvent(@RequestBody Event event) {
 		Event updatedEvent = eventDao.update(event);
-		System.out.println("Event updated with id = " + updatedEvent.getId());
 		return updatedEvent;
 	}
 
@@ -79,6 +75,5 @@ public class EventController {
 	public void deleteEvent(@PathVariable long id) {
 		Event event = eventDao.read(id);
 		eventDao.delete(event);
-		System.out.println("Delete Event with id = " + id);
 	}
 }
