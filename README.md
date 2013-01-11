@@ -9,14 +9,14 @@
 
 - Bewertungskriterien
   - Inhalt (2/3)
-    - Verwendete Frameworks
-    - Schwierigkeiten/Lösungen/Workarounds
-    - Kurze Applikationsdemo
+      - Verwendete Frameworks
+      - Schwierigkeiten/Lösungen/Workarounds
+      - Kurze Applikationsdemo
   - Präsentationstechnik (1/3)
-    - Bereits sein (Beamer-Probleme sind unter der Würde eines Informatikers)
-    - Es müssen nicht alle etwas sagen
-    - Klar und eloquent vortragen
-    - Aufbau der Präsentation (Logisch, interessant,...)
-    - Zeitmanagement
+      - Bereits sein (Beamer-Probleme sind unter der Würde eines Informatikers)
+      - Es müssen nicht alle etwas sagen
+      - Klar und eloquent vortragen
+      - Aufbau der Präsentation (Logisch, interessant,...)
+      - Zeitmanagement
 
 =====
